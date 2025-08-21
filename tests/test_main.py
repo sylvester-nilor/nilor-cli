@@ -13,7 +13,7 @@ def test_main_initialization():
 @patch('builtins.input')
 @patch('src.main.ChatService')
 def test_main_exit_command(mock_chat_service_class, mock_input):
-    """Test that main exits properly on quit command"""
+
     # Mock the service
     mock_service = Mock()
     mock_chat_service_class.return_value = mock_service
@@ -44,7 +44,7 @@ def test_main_exit_command(mock_chat_service_class, mock_input):
 @patch('builtins.input')
 @patch('src.main.ChatService')
 def test_main_send_message(mock_chat_service_class, mock_input):
-    """Test that main can send a message and display response"""
+
     # Mock the service
     mock_service = Mock()
     mock_chat_service_class.return_value = mock_service
