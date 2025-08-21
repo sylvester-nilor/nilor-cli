@@ -3,6 +3,7 @@ from dataclasses import dataclass
 from datetime import datetime
 from typing import Optional, List
 from chat import send_chat_message
+from auth import get_auth_token
 
 
 @dataclass
@@ -25,9 +26,9 @@ class ChatService:
         self.thread_id: Optional[str] = None
         self.start_time: Optional[datetime] = None
         self.message_count = 0
+        self.auth_token = get_auth_token()
     
     def start_session(self) -> SessionInfo:
-        """Start a new conversation session"""
         self.thread_id = str(uuid.uuid4())
         self.start_time = datetime.now()
         self.message_count = 0
@@ -38,11 +39,10 @@ class ChatService:
         )
     
     def send_message(self, message: str) -> Optional[ChatResponse]:
-        """Send a message in the current session and return canonical response"""
         if not self.thread_id:
             return None
         
-        response_text = send_chat_message(message, self.thread_id, self.book_agent_url)
+        response_text = send_chat_message(message, self.thread_id, self.book_agent_url, self.auth_token)
         if response_text:
             self.message_count += 1
             return ChatResponse(
@@ -53,7 +53,6 @@ class ChatService:
         return None
     
     def end_session(self) -> Optional[SessionInfo]:
-        """End the current session and return summary"""
         if not self.thread_id:
             return None
         
@@ -63,7 +62,6 @@ class ChatService:
             message_count=self.message_count
         )
         
-        # Reset session state
         self.thread_id = None
         self.start_time = None
         self.message_count = 0
@@ -71,7 +69,6 @@ class ChatService:
         return session_info
     
     def get_session_info(self) -> Optional[SessionInfo]:
-        """Get current session information"""
         if not self.thread_id:
             return None
         
@@ -91,13 +88,11 @@ if __name__ == "__main__":
     print(f"🌐 URL: {book_agent_url}")
     print("-" * 50)
     
-    # Test starting a session
     print("🚀 Starting new session...")
     session_info = service.start_session()
     print(f"📝 Session started: {session_info.thread_id}")
     print(f"⏰ Start time: {session_info.start_time}")
     
-    # Test sending messages
     test_message = "Hello from the chat service!"
     print(f"\n💬 Sending: {test_message}")
     
@@ -110,7 +105,6 @@ if __name__ == "__main__":
     else:
         print("❌ Failed to get response")
     
-    # Test sending another message
     test_message2 = "How are you doing today?"
     print(f"\n💬 Sending: {test_message2}")
     
@@ -121,7 +115,6 @@ if __name__ == "__main__":
     else:
         print("❌ Failed to get response")
     
-    # Test ending session
     print("\n🛑 Ending session...")
     session_summary = service.end_session()
     if session_summary:

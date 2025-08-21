@@ -5,7 +5,6 @@ from src.chat_service import ChatService, ChatResponse, SessionInfo
 
 
 def test_chat_service_initialization():
-    """Test ChatService initialization"""
     book_agent_url = "https://book-agent-v1-959508709789.us-central1.run.app"
     service = ChatService(book_agent_url)
     
@@ -16,7 +15,6 @@ def test_chat_service_initialization():
 
 
 def test_chat_service_start_session():
-    """Test starting a new session"""
     book_agent_url = "https://book-agent-v1-959508709789.us-central1.run.app"
     service = ChatService(book_agent_url)
     
@@ -30,7 +28,6 @@ def test_chat_service_start_session():
 
 
 def test_chat_service_send_message():
-    """Test sending a message through the service"""
     book_agent_url = "https://book-agent-v1-959508709789.us-central1.run.app"
     service = ChatService(book_agent_url)
     
@@ -48,7 +45,6 @@ def test_chat_service_send_message():
 
 
 def test_chat_service_send_message_no_session():
-    """Test sending a message without starting a session"""
     book_agent_url = "https://book-agent-v1-959508709789.us-central1.run.app"
     service = ChatService(book_agent_url)
     
@@ -58,7 +54,6 @@ def test_chat_service_send_message_no_session():
 
 
 def test_chat_service_end_session():
-    """Test ending a session"""
     book_agent_url = "https://book-agent-v1-959508709789.us-central1.run.app"
     service = ChatService(book_agent_url)
     
@@ -78,7 +73,6 @@ def test_chat_service_end_session():
 
 
 def test_chat_service_get_session_info():
-    """Test getting session information"""
     book_agent_url = "https://book-agent-v1-959508709789.us-central1.run.app"
     service = ChatService(book_agent_url)
     

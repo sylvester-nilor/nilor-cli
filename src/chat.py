@@ -3,8 +3,9 @@ from typing import Optional
 from auth import get_auth_token
 
 
-def send_chat_message(message: str, thread_id: str, book_agent_url: str) -> Optional[str]:
-    auth_token = get_auth_token()
+def send_chat_message(message: str, thread_id: str, book_agent_url: str, auth_token: Optional[str] = None) -> Optional[str]:
+    if auth_token is None:
+        auth_token = get_auth_token()
     if not auth_token:
         return None
 
