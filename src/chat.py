@@ -4,7 +4,6 @@ from auth import get_auth_token
 
 
 def send_chat_message(message: str, thread_id: str, book_agent_url: str) -> Optional[str]:
-    """Send a single message to the book-agent service and return the response"""
     auth_token = get_auth_token()
     if not auth_token:
         return None
@@ -34,3 +33,24 @@ def send_chat_message(message: str, thread_id: str, book_agent_url: str) -> Opti
 
     except requests.exceptions.RequestException:
         return None
+
+
+if __name__ == "__main__":
+    print("=== Testing chat.py with real API ===")
+
+    book_agent_url = "https://book-agent-v1-959508709789.us-central1.run.app"
+    thread_id = "test-chat-main-123"
+    test_message = "Hello! This is a test message from the CLI."
+
+    print(f"📝 Thread ID: {thread_id}")
+    print(f"💬 Message: {test_message}")
+    print(f"🌐 URL: {book_agent_url}")
+    print("-" * 50)
+    
+
+    response = send_chat_message(test_message, thread_id, book_agent_url)
+
+    if response:
+        print(f"✅ Success! Response: {response}")
+    else:
+        print("❌ Failed to get response")
