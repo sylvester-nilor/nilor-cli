@@ -24,21 +24,23 @@ click==8.2.1
 docstring-parser==0.17.0
     # via google-cloud-aiplatform
 fastapi==0.116.1
-    # via nilor cli v1 (pyproject.toml)
+    # via nilor-cli-v1 (pyproject.toml)
 google-api-core==2.25.1
     # via
     #   google-cloud-aiplatform
     #   google-cloud-bigquery
     #   google-cloud-core
+    #   google-cloud-firestore
     #   google-cloud-resource-manager
     #   google-cloud-storage
 google-auth==2.40.3
     # via
-    #   nilor cli v1 (pyproject.toml)
+    #   nilor-cli-v1 (pyproject.toml)
     #   google-api-core
     #   google-cloud-aiplatform
     #   google-cloud-bigquery
     #   google-cloud-core
+    #   google-cloud-firestore
     #   google-cloud-resource-manager
     #   google-cloud-storage
     #   google-genai
@@ -49,7 +51,10 @@ google-cloud-bigquery==3.36.0
 google-cloud-core==2.4.3
     # via
     #   google-cloud-bigquery
+    #   google-cloud-firestore
     #   google-cloud-storage
+google-cloud-firestore==2.21.0
+    # via nilor-cli-v1 (pyproject.toml)
 google-cloud-resource-manager==1.14.2
     # via google-cloud-aiplatform
 google-cloud-storage==2.19.0
@@ -91,7 +96,7 @@ httptools==0.6.4
     # via uvicorn
 httpx==0.28.1
     # via
-    #   nilor cli v1 (pyproject.toml)
+    #   nilor-cli-v1 (pyproject.toml)
     #   google-genai
     #   langchain-google-vertexai
     #   langgraph-sdk
@@ -111,15 +116,15 @@ jsonpointer==3.0.0
     # via jsonpatch
 langchain-core==0.3.74
     # via
-    #   nilor cli v1 (pyproject.toml)
+    #   nilor-cli-v1 (pyproject.toml)
     #   langchain-google-vertexai
     #   langgraph
     #   langgraph-checkpoint
     #   langgraph-prebuilt
 langchain-google-vertexai==2.0.28
-    # via nilor cli v1 (pyproject.toml)
+    # via nilor-cli-v1 (pyproject.toml)
 langgraph==0.6.6
-    # via nilor cli v1 (pyproject.toml)
+    # via nilor-cli-v1 (pyproject.toml)
 langgraph-checkpoint==2.1.1
     # via
     #   langgraph
@@ -156,11 +161,13 @@ proto-plus==1.26.1
     # via
     #   google-api-core
     #   google-cloud-aiplatform
+    #   google-cloud-firestore
     #   google-cloud-resource-manager
 protobuf==6.32.0
     # via
     #   google-api-core
     #   google-cloud-aiplatform
+    #   google-cloud-firestore
     #   google-cloud-resource-manager
     #   googleapis-common-protos
     #   grpc-google-iam-v1
@@ -176,7 +183,7 @@ pyasn1-modules==0.4.2
     # via google-auth
 pydantic==2.11.7
     # via
-    #   nilor cli v1 (pyproject.toml)
+    #   nilor-cli-v1 (pyproject.toml)
     #   fastapi
     #   google-cloud-aiplatform
     #   google-genai
@@ -189,7 +196,11 @@ pydantic-core==2.33.2
 pygments==2.19.2
     # via pytest
 pytest==8.4.1
-    # via nilor cli v1 (pyproject.toml)
+    # via
+    #   nilor-cli-v1 (pyproject.toml)
+    #   pytest-asyncio
+pytest-asyncio==1.1.0
+    # via nilor-cli-v1 (pyproject.toml)
 python-dateutil==2.9.0.post0
     # via google-cloud-bigquery
 python-dotenv==1.1.1
@@ -238,7 +249,7 @@ typing-inspection==0.4.1
 urllib3==2.5.0
     # via requests
 uvicorn==0.35.0
-    # via nilor cli v1 (pyproject.toml)
+    # via nilor-cli-v1 (pyproject.toml)
 uvloop==0.21.0
     # via uvicorn
 validators==0.35.0
