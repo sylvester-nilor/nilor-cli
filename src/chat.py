@@ -46,7 +46,7 @@ if __name__ == "__main__":
     print(f"💬 Message: {test_message}")
     print(f"🌐 URL: {book_agent_url}")
     print("-" * 50)
-    
+
 
     response = send_chat_message(test_message, thread_id, book_agent_url)
 
