@@ -53,6 +53,22 @@ uv run pytest
 uv run python main.py --debug
 ```
 
+## Deployment
+
+Deploy the service using the `deploy.sh` script:
+
+```bash
+# Deploy with image rebuild
+./deploy.sh -b t
+
+# Deploy without image rebuild  
+./deploy.sh -b f
+
+# Plan changes without applying (dry run)
+./deploy.sh -b t -p
+./deploy.sh -b f --plan
+```
+
 ## Enhancements
 
 1. TBD
